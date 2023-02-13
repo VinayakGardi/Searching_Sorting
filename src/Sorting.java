@@ -2,8 +2,8 @@ import java.util.Arrays;
 
 public class Sorting {
     public static void main(String[] args) {
-        int nums[]={1,2,3,4,5};
-        bubble(nums);
+        int nums[]={7,5,1,62,2};
+        selection(nums);
         System.out.println(Arrays.toString(nums));
 
     }
@@ -22,6 +22,29 @@ public class Sorting {
                 break;           // if no swap is done in the 1st pass then no need check for further passes so break from this loop
             }
         }
+    }
 
+    static void selection(int nums[]) {
+        for(int i=0;i< nums.length;i++ ){
+            int last = nums.length -i-1;
+            int max = getMax(nums,0,last);
+            swap(nums,max,last);
+        }
+    }
+
+    static void swap(int nums[],int first,int end) {
+        int temp = nums[first];
+        nums[first] = nums[end];
+        nums[end] = temp;
+    }
+
+    private static int getMax(int[] nums, int start, int end) {
+        int max = start;
+        for(int i=start;i<= end ;i++) {
+            if(nums[max] <= nums[i]) {
+                max = i;
+            }
+        }
+        return max;
     }
 }
